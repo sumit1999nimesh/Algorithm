@@ -1,0 +1,29 @@
+public class Binary_Search {
+
+	public static void main(String[] args) {
+		int[] data = { 2, 3, 4, 10, 40 };
+		int tar = 3;
+		int pos = Bin_Sear(data, tar, 0, data.length - 1);
+		System.out.print("pos" + pos);
+
+	}
+	static int Bin_Sear(int[] data, int tar, int left, int rig) {
+
+		if (rig >= left) {
+			int mid = (left + rig) / 2;
+
+			if (data[mid] == tar) {
+				return mid;
+			}
+			if (data[mid] > tar) {
+				return Bin_Sear(data, tar, left, mid - 1);
+			}
+			if (data[mid] < tar) {
+				return Bin_Sear(data, tar, mid + 1, rig);
+			}
+
+		}
+		return -1;
+	}
+
+}
