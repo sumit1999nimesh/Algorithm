@@ -1,0 +1,56 @@
+package algo;
+
+public class Quick_Sort {
+
+	public static void main(String[] args) {
+		int arr[] = { 23, 4, 5, 63, 54, 77 };
+		int n = arr.length;
+		q_sort(arr, 0, n - 1);
+
+		for (int j = 0; j < arr.length; j++) {
+			System.out.println("" + arr[j]);
+		}
+
+	}
+	private static void q_sort(int[] arr, int l, int h) {
+		if (l < h) {
+			int pi = partition(arr, l, h);
+			q_sort(arr, l, pi);
+			q_sort(arr, pi + 1, h);
+		}
+
+	}
+	private static int partition(int[] arr, int l, int h) {
+		int pi = 0;
+		if (l < h) {
+			int pivot = arr[l];	
+			int i = l;
+			int j = h;
+			while (i < j) {
+				i += 1;
+				while (i <= h && arr[i] < pivot) {
+					i += 1;
+				}
+				while (j >= l && arr[j] > pivot) {
+					j -= 1;
+				}
+
+				if (i <= h && i < j) {
+					swap(arr, i, j);
+				}
+
+			}
+			swap(arr, l, j);
+			pi = j;
+		}
+		return pi;
+	}
+	private static void swap(int[] array, int i, int j) {
+		if (i >= 0 && j >= 0 && i < array.length && j < array.length) {
+			int tmp = array[i];
+			array[i] = array[j];
+			array[j] = tmp;
+		}
+
+	}
+}
